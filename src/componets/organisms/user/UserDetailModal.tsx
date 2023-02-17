@@ -21,7 +21,7 @@ export const UserDetailModal: FC<Props> = memo(({ user, isOpen, isAdmin, onClose
     setUsername(user?.username ?? '')
     setName(user?.name ?? '')
     setEmail(user?.email ?? '')
-    setPhone(user?.phone ?? '')  
+    setPhone(user?.phone ?? '')
   }, [user])
 
   const onChangeUserName = (e: ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)
@@ -44,7 +44,7 @@ export const UserDetailModal: FC<Props> = memo(({ user, isOpen, isAdmin, onClose
               <FormControl>
                 <FormLabel>
                   <FormLabel>名前</FormLabel>
-                  <Input value={usename} onChange={onChangeUserName} isReadOnly={!isAdmin} />
+                  <Input value={usename} onChange={onChangeName} isReadOnly={!isAdmin} />
                   <FormLabel>成果</FormLabel>
                   <Input value={name} onChange={onChangeUserName} isReadOnly={!isAdmin} />
                   <FormLabel>Mail</FormLabel>
@@ -52,13 +52,14 @@ export const UserDetailModal: FC<Props> = memo(({ user, isOpen, isAdmin, onClose
                   <FormLabel>TEL</FormLabel>
                   <Input value={phone} onChange={onChangePhone} isReadOnly={!isAdmin} />
                 </FormLabel>
+                
               </FormControl>
             </Stack>
           </ModalBody>
           {isAdmin && (
-          <ModalFooter>
-            <PrimaryButton onClick={onClickUpdate}>更新</PrimaryButton>
-          </ModalFooter>
+            <ModalFooter>
+              <PrimaryButton onClick={onClickUpdate}>更新</PrimaryButton>
+            </ModalFooter>
           )}
         </ModalContent>
       </ModalOverlay>
