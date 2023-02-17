@@ -41,6 +41,3 @@ export const Header: FC = memo(() => {
   )
 })
 
-function useDisclousre(): { isOpen: any; onOpen: any; onClose: any; } {
-  throw new Error("Function not implemented.");
-}
