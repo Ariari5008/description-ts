@@ -1,14 +1,19 @@
 import { extendTheme } from "@chakra-ui/react"
 
-const theme = extendTheme({
+const useBreakpoint = {
     styles: {
         global: {
             body: {
-                backgroundColor: "gray.200",
-                color: "gray.800"
-            }
+                backgroundColor: "red.100",
+                color: "purple.800"
+            },
         }
+
     }
-});
+};
+
+const theme = extendTheme({...useBreakpoint})
+
+
 
 export default theme;
