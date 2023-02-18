@@ -1,4 +1,4 @@
-import { Center, Spinner, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
+import {  Center, Spinner, useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
 import { FC, memo, useCallback, useEffect } from "react";
 import { UserCard } from "../organisms/user/UserCard";
 import { UserDetailModal } from "../organisms/user/UserDetailModal";
@@ -10,14 +10,13 @@ import { useLoginUser } from './../../hooks/useLoginUser';
 export const UserManagement: FC = memo(() => {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const { getUsers, loading, users } = useAllUsers()
-    const {onSelectUser, selectUser} = useSelectUser();
-    const {loginUser} = useLoginUser()
-    console.log(loginUser)
+    const { onSelectUser, selectUser } = useSelectUser();
+    const { loginUser } = useLoginUser()
 
     useEffect(() => getUsers(), []);
 
     const onClickUser = useCallback((id: number) => {
-        onSelectUser({id, users, onOpen})
+        onSelectUser({ id, users, onOpen })
     }, [users, onSelectUser, onOpen]);
 
 
@@ -42,8 +41,7 @@ export const UserManagement: FC = memo(() => {
                     ))}
                 </Wrap>
             )}
-            <UserDetailModal user={selectUser} isOpen={isOpen} isAdmin={loginUser?.isAdmin} onClose={onClose}/>
-
+            <UserDetailModal user={selectUser} isOpen={isOpen} isAdmin={loginUser?.isAdmin} onClose={onClose} />
         </>
     )
 })

@@ -8,7 +8,13 @@ export const Login: FC = memo(() => {
     const [userId, setUserId] = useState<string>("")
 
     const onChangeUserId = (e: ChangeEvent<HTMLInputElement>) => {
+        // handleClickStart()
         setUserId(e.target.value);
+    }
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        onClickLogin()
+        e.preventDefault();
     }
 
     const onClickLogin = () => login(userId);
@@ -17,16 +23,18 @@ export const Login: FC = memo(() => {
         <Flex align="center" justify="center" height="100vh">
             <Box bg="white" w="sm" p={4} borderRadius="md" shadow="md">
                 <Heading as="h1" size="lg" textAlign="center" >ユーザー管理アプリです</Heading>
-                <Divider my={4}/>
-                <Stack spacing={4} py={4} px={10}>
-                    <Input placeholder="ユーザーID" value={userId} onChange={onChangeUserId}/>
-                    <PrimaryButton 
-                    isDisabled={userId === ""}
-                    loading={loading} 
-                    onClick={onClickLogin} >
-                        ログイン
-                    </PrimaryButton>
-                </Stack>
+                <Divider my={4} />
+                <form onSubmit={handleSubmit}>
+                    <Stack spacing={4} py={4} px={10}>
+                        <Input placeholder="ユーザーID" value={userId} onChange={onChangeUserId} />
+                        <PrimaryButton
+                            isDisabled={userId === ""}
+                            loading={loading}
+                            onClick={onClickLogin} >
+                            ログイン
+                        </PrimaryButton>
+                    </Stack>
+                </form>
             </Box>
         </Flex>
     )
